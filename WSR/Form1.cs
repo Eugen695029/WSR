@@ -26,7 +26,6 @@ namespace WSR
             connection.Open();
             SqlDataAdapter adapterEamil = new SqlDataAdapter($"SELECT [User].Email FROM [User]", connection);
             DataSet dataset = new DataSet();
-
             adapterEamil.Fill(dataset);
 
         }
