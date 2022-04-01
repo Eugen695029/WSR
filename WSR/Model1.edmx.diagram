@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d2000cbf9c234b979dcfa9001cf54258" Name="Diagram1">
+        <EntityTypeShape EntityType="wsrModel.Charity" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Country" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Event" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Event_Type" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Gender" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Position" Width="1.5" PointX="7.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Race" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Racer" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Registration" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Registration_Status" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Result" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Role" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Sponsorship" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Staff" Width="1.5" PointX="10" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Timesheet" Width="1.5" PointX="12.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.Volunteer" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="wsrModel.User" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="wsrModel.FK_Registration_Charity" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Race_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Racer_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Volunteer_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Event_Event_Type1" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Event_Race" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Registration_Event_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Racer_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Volunteer_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Staff_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Registration_Racer" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Registration_Event_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="wsrModel.FK_Timesheet_Staff" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

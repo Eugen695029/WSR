@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wsrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Charity">
+    <Key>
+      <PropertyRef Name="ID_Сharity" />
+    </Key>
+    <Property Name="ID_Сharity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Charity_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Charity_Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Charity_Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK_Registration_Charity" FromRole="Charity" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID_Country" />
+    </Key>
+    <Property Name="ID_Country" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Country_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Country_Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Race" Relationship="Self.FK_Race_Country" FromRole="Country" ToRole="Race" />
+    <NavigationProperty Name="Racer" Relationship="Self.FK_Racer_Country" FromRole="Country" ToRole="Racer" />
+    <NavigationProperty Name="Volunteer" Relationship="Self.FK_Volunteer_Country" FromRole="Country" ToRole="Volunteer" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID_Event" />
+    </Key>
+    <Property Name="ID_Event" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_EventType" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ID_Race" Type="Int32" Nullable="false" />
+    <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="MaxParticipants" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Event_Type" Relationship="Self.FK_Event_Event_Type1" FromRole="Event" ToRole="Event_Type" />
+    <NavigationProperty Name="Race" Relationship="Self.FK_Event_Race" FromRole="Event" ToRole="Race" />
+    <NavigationProperty Name="Result" Relationship="Self.FK_Registration_Event_Event" FromRole="Event" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="Event_Type">
+    <Key>
+      <PropertyRef Name="ID_Event_type" />
+    </Key>
+    <Property Name="ID_Event_type" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Event_Type_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Event_Event_Type1" FromRole="Event_Type" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="ID_Gender" />
+    </Key>
+    <Property Name="ID_Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Gender_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Racer" Relationship="Self.FK_Racer_Gender" FromRole="Gender" ToRole="Racer" />
+    <NavigationProperty Name="Volunteer" Relationship="Self.FK_Volunteer_Gender" FromRole="Gender" ToRole="Volunteer" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="Positionid" />
+    </Key>
+    <Property Name="Positionid" Type="Int32" Nullable="false" />
+    <Property Name="PositionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PositionDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PayPeriod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PayRate" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Position" FromRole="Position" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Race">
+    <Key>
+      <PropertyRef Name="ID_Race" />
+    </Key>
+    <Property Name="ID_Race" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Race_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Country" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Year_Held" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Race_Country" FromRole="Race" ToRole="Country" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Event_Race" FromRole="Race" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Racer">
+    <Key>
+      <PropertyRef Name="ID_Racer" />
+    </Key>
+    <Property Name="ID_Racer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ID_Country" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Racer_Country" FromRole="Racer" ToRole="Country" />
+    <NavigationProperty Name="Gender1" Relationship="Self.FK_Racer_Gender" FromRole="Racer" ToRole="Gender" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK_Registration_Racer" FromRole="Racer" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="ID_Registration" />
+    </Key>
+    <Property Name="ID_Registration" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Racer" Type="Int32" Nullable="false" />
+    <Property Name="Registration_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ID_Registration_Status" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="ID_Charity" Type="Int32" Nullable="false" />
+    <Property Name="SponsorshipTarget" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Charity" Relationship="Self.FK_Registration_Charity" FromRole="Registration" ToRole="Charity" />
+    <NavigationProperty Name="Racer" Relationship="Self.FK_Registration_Racer" FromRole="Registration" ToRole="Racer" />
+    <NavigationProperty Name="Result" Relationship="Self.FK_Registration_Event_Registration" FromRole="Registration" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="Registration_Status">
+    <Key>
+      <PropertyRef Name="ID_Registration_Status" />
+    </Key>
+    <Property Name="ID_Registration_Status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Statu_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ID_Result" />
+    </Key>
+    <Property Name="ID_Result" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Registration" Type="Int32" Nullable="false" />
+    <Property Name="ID_Event" Type="Int32" Nullable="false" />
+    <Property Name="BidNumber" Type="Int16" Nullable="false" />
+    <Property Name="RaceTime" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Registration_Event_Event" FromRole="Result" ToRole="Event" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK_Registration_Event_Registration" FromRole="Result" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID_Role" />
+    </Key>
+    <Property Name="ID_Role" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Role_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Sponsorship">
+    <Key>
+      <PropertyRef Name="ID_Sponsorship" />
+    </Key>
+    <Property Name="ID_Sponsorship" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SponsorName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Staffid" />
+    </Key>
+    <Property Name="Staffid" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Gender" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Positionid" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Position" Relationship="Self.FK_Staff_Position" FromRole="Staff" ToRole="Position" />
+    <NavigationProperty Name="Timesheet" Relationship="Self.FK_Timesheet_Staff" FromRole="Staff" ToRole="Timesheet" />
+  </EntityType>
+  <EntityType Name="Timesheet">
+    <Key>
+      <PropertyRef Name="Timesheetid" />
+    </Key>
+    <Property Name="Timesheetid" Type="Int32" Nullable="false" />
+    <Property Name="Staffid" Type="Int32" Nullable="false" />
+    <Property Name="StartDateTime" Type="DateTime" Precision="3" />
+    <Property Name="EndDateTime" Type="DateTime" Precision="3" />
+    <Property Name="PayAmount" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_Timesheet_Staff" FromRole="Timesheet" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Volunteer">
+    <Key>
+      <PropertyRef Name="ID_Volunteer" />
+    </Key>
+    <Property Name="ID_Volunteer" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="First_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_Country" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Gender_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Volunteer_Country" FromRole="Volunteer" ToRole="Country" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_Volunteer_Gender" FromRole="Volunteer" ToRole="Gender" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="First_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Last_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Role" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Registration_Charity">
+    <End Role="Charity" Type="Self.Charity" Multiplicity="1" />
+    <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Charity">
+        <PropertyRef Name="ID_Сharity" />
+      </Principal>
+      <Dependent Role="Registration">
+        <PropertyRef Name="ID_Charity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Race_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Race" Type="Self.Race" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID_Country" />
+      </Principal>
+      <Dependent Role="Race">
+        <PropertyRef Name="ID_Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Racer_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Racer" Type="Self.Racer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID_Country" />
+      </Principal>
+      <Dependent Role="Racer">
+        <PropertyRef Name="ID_Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID_Country" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="ID_Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_Event_Type1">
+    <End Role="Event_Type" Type="Self.Event_Type" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event_Type">
+        <PropertyRef Name="ID_Event_type" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="ID_EventType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_Race">
+    <End Role="Race" Type="Self.Race" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Race">
+        <PropertyRef Name="ID_Race" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="ID_Race" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Registration_Event_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID_Event" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="ID_Event" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Racer_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Racer" Type="Self.Racer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="ID_Gender" />
+      </Principal>
+      <Dependent Role="Racer">
+        <PropertyRef Name="Gender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="ID_Gender" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="Gender_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="Positionid" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Positionid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Registration_Racer">
+    <End Role="Racer" Type="Self.Racer" Multiplicity="1" />
+    <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Racer">
+        <PropertyRef Name="ID_Racer" />
+      </Principal>
+      <Dependent Role="Registration">
+        <PropertyRef Name="ID_Racer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Registration_Event_Registration">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="ID_Registration" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="ID_Registration" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID_Role" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="ID_Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Timesheet_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Timesheet" Type="Self.Timesheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staffid" />
+      </Principal>
+      <Dependent Role="Timesheet">
+        <PropertyRef Name="Staffid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="wsrEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Charity" EntityType="Self.Charity" />
+    <EntitySet Name="Country" EntityType="Self.Country" />
+    <EntitySet Name="Event" EntityType="Self.Event" />
+    <EntitySet Name="Event_Type" EntityType="Self.Event_Type" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" />
+    <EntitySet Name="Position" EntityType="Self.Position" />
+    <EntitySet Name="Race" EntityType="Self.Race" />
+    <EntitySet Name="Racer" EntityType="Self.Racer" />
+    <EntitySet Name="Registration" EntityType="Self.Registration" />
+    <EntitySet Name="Registration_Status" EntityType="Self.Registration_Status" />
+    <EntitySet Name="Result" EntityType="Self.Result" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" />
+    <EntitySet Name="Timesheet" EntityType="Self.Timesheet" />
+    <EntitySet Name="Volunteer" EntityType="Self.Volunteer" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_Registration_Charity" Association="Self.FK_Registration_Charity">
+      <End Role="Charity" EntitySet="Charity" />
+      <End Role="Registration" EntitySet="Registration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Race_Country" Association="Self.FK_Race_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Race" EntitySet="Race" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Racer_Country" Association="Self.FK_Racer_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Racer" EntitySet="Racer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Country" Association="Self.FK_Volunteer_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_Event_Type1" Association="Self.FK_Event_Event_Type1">
+      <End Role="Event_Type" EntitySet="Event_Type" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_Race" Association="Self.FK_Event_Race">
+      <End Role="Race" EntitySet="Race" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Registration_Event_Event" Association="Self.FK_Registration_Event_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Racer_Gender" Association="Self.FK_Racer_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Racer" EntitySet="Racer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Gender" Association="Self.FK_Volunteer_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Position" Association="Self.FK_Staff_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Registration_Racer" Association="Self.FK_Registration_Racer">
+      <End Role="Racer" EntitySet="Racer" />
+      <End Role="Registration" EntitySet="Registration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Registration_Event_Registration" Association="Self.FK_Registration_Event_Registration">
+      <End Role="Registration" EntitySet="Registration" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Timesheet_Staff" Association="Self.FK_Timesheet_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Timesheet" EntitySet="Timesheet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

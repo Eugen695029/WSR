@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище wsrModelContainer" CdmEntityContainer="wsrEntities">
+    <EntitySetMapping Name="Charity">
+      <EntityTypeMapping TypeName="wsrModel.Charity">
+        <MappingFragment StoreEntitySet="Charity">
+          <ScalarProperty Name="ID_Сharity" ColumnName="ID_Сharity" />
+          <ScalarProperty Name="Charity_Name" ColumnName="Charity_Name" />
+          <ScalarProperty Name="Charity_Description" ColumnName="Charity_Description" />
+          <ScalarProperty Name="Charity_Logo" ColumnName="Charity_Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="wsrModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+          <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+          <ScalarProperty Name="Country_Flag" ColumnName="Country_Flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Event">
+      <EntityTypeMapping TypeName="wsrModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="ID_Event" ColumnName="ID_Event" />
+          <ScalarProperty Name="Event_Name" ColumnName="Event_Name" />
+          <ScalarProperty Name="ID_EventType" ColumnName="ID_EventType" />
+          <ScalarProperty Name="ID_Race" ColumnName="ID_Race" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="MaxParticipants" ColumnName="MaxParticipants" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Event_Type">
+      <EntityTypeMapping TypeName="wsrModel.Event_Type">
+        <MappingFragment StoreEntitySet="Event_Type">
+          <ScalarProperty Name="ID_Event_type" ColumnName="ID_Event_type" />
+          <ScalarProperty Name="Event_Type_Name" ColumnName="Event_Type_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="wsrModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="ID_Gender" ColumnName="ID_Gender" />
+          <ScalarProperty Name="Gender_Name" ColumnName="Gender_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Position">
+      <EntityTypeMapping TypeName="wsrModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="Positionid" ColumnName="Positionid" />
+          <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+          <ScalarProperty Name="PositionDescription" ColumnName="PositionDescription" />
+          <ScalarProperty Name="PayPeriod" ColumnName="PayPeriod" />
+          <ScalarProperty Name="PayRate" ColumnName="PayRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Race">
+      <EntityTypeMapping TypeName="wsrModel.Race">
+        <MappingFragment StoreEntitySet="Race">
+          <ScalarProperty Name="ID_Race" ColumnName="ID_Race" />
+          <ScalarProperty Name="Race_Name" ColumnName="Race_Name" />
+          <ScalarProperty Name="Sity" ColumnName="Sity" />
+          <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+          <ScalarProperty Name="Year_Held" ColumnName="Year_Held" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Racer">
+      <EntityTypeMapping TypeName="wsrModel.Racer">
+        <MappingFragment StoreEntitySet="Racer">
+          <ScalarProperty Name="ID_Racer" ColumnName="ID_Racer" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registration">
+      <EntityTypeMapping TypeName="wsrModel.Registration">
+        <MappingFragment StoreEntitySet="Registration">
+          <ScalarProperty Name="ID_Registration" ColumnName="ID_Registration" />
+          <ScalarProperty Name="ID_Racer" ColumnName="ID_Racer" />
+          <ScalarProperty Name="Registration_Date" ColumnName="Registration_Date" />
+          <ScalarProperty Name="ID_Registration_Status" ColumnName="ID_Registration_Status" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="ID_Charity" ColumnName="ID_Charity" />
+          <ScalarProperty Name="SponsorshipTarget" ColumnName="SponsorshipTarget" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registration_Status">
+      <EntityTypeMapping TypeName="wsrModel.Registration_Status">
+        <MappingFragment StoreEntitySet="Registration_Status">
+          <ScalarProperty Name="ID_Registration_Status" ColumnName="ID_Registration_Status" />
+          <ScalarProperty Name="Statu_Name" ColumnName="Statu_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Result">
+      <EntityTypeMapping TypeName="wsrModel.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="ID_Result" ColumnName="ID_Result" />
+          <ScalarProperty Name="ID_Registration" ColumnName="ID_Registration" />
+          <ScalarProperty Name="ID_Event" ColumnName="ID_Event" />
+          <ScalarProperty Name="BidNumber" ColumnName="BidNumber" />
+          <ScalarProperty Name="RaceTime" ColumnName="RaceTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="wsrModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sponsorship">
+      <EntityTypeMapping TypeName="wsrModel.Sponsorship">
+        <MappingFragment StoreEntitySet="Sponsorship">
+          <ScalarProperty Name="ID_Sponsorship" ColumnName="ID_Sponsorship" />
+          <ScalarProperty Name="SponsorName" ColumnName="SponsorName" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staff">
+      <EntityTypeMapping TypeName="wsrModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="Staffid" ColumnName="Staffid" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Positionid" ColumnName="Positionid" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timesheet">
+      <EntityTypeMapping TypeName="wsrModel.Timesheet">
+        <MappingFragment StoreEntitySet="Timesheet">
+          <ScalarProperty Name="Timesheetid" ColumnName="Timesheetid" />
+          <ScalarProperty Name="Staffid" ColumnName="Staffid" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="PayAmount" ColumnName="PayAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Volunteer">
+      <EntityTypeMapping TypeName="wsrModel.Volunteer">
+        <MappingFragment StoreEntitySet="Volunteer">
+          <ScalarProperty Name="ID_Volunteer" ColumnName="ID_Volunteer" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+          <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="wsrModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
